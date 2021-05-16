@@ -1,0 +1,19 @@
+->Francia:
+	*general
+	*business
+	*health
+	*science
+	*sports
+	*technology
+->Brasil:
+	*general
+	*health
+	*science
+	*sports
+	*technology
+->Rusia:
+	*general
+	*health
+	*science
+	*sports
+	*technology
