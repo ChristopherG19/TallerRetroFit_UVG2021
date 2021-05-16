@@ -26,18 +26,18 @@
         app:layout_constraintTop_toBottomOf="@+id/searchNews" />
 
     <Button
-        android:id="@+id/BtnChina"
+        android:id="@+id/BtnBrasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="280dp"
+        android:layout_marginEnd="268dp"
         android:layout_marginBottom="7dp"
-        android:backgroundTint="#336993"
-        android:text="China (CN)"
+        android:backgroundTint="#1E7514"
+        android:text="Brasil (BR)"
         app:layout_constraintBottom_toTopOf="@+id/rvNews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchNews"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/BtnFran"
@@ -45,16 +45,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="151dp"
+        android:layout_marginEnd="128dp"
         android:layout_marginBottom="7dp"
-        android:backgroundTint="#4FA153"
+        android:backgroundTint="#1327AE"
         android:text="Francia (FR)"
         app:layout_constraintBottom_toTopOf="@+id/rvNews"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toEndOf="@+id/BtnChina"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/BtnBrasil"
         app:layout_constraintTop_toBottomOf="@+id/searchNews"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/BtnRusia"
@@ -64,13 +64,13 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="7dp"
-        android:backgroundTint="#BFB134"
+        android:backgroundTint="#CC2929"
         android:text=" Rusia (RU)"
         app:layout_constraintBottom_toTopOf="@+id/rvNews"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toEndOf="@+id/BtnFran"
         app:layout_constraintTop_toBottomOf="@+id/searchNews"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
