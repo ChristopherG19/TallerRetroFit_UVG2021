@@ -11,4 +11,5 @@ Agregué un archivo .txt que detalla los temas con noticias disponibles para los
 De ingresar un tema distinto no se mostrará ninguna noticia para ese país.
 
 Como no se específico la forma de implementar la búsqueda de país por medio de botones, mi aplicación
-funciona presionando el país que se desee y posteriormente ingresando un tema específico. 
+funciona presionando el país que se desee y posteriormente ingresando un tema específico para ser
+dirigido a la sección solicitada del país seleccionado. 
