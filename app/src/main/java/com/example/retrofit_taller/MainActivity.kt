@@ -3,6 +3,7 @@ package com.example.retrofit_taller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofit_taller.databinding.ActivityMainBinding
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ArticleAdapter
     private val articleList = mutableListOf<Articles>()
+    lateinit var BtnChina : Button
+    lateinit var BtnFrancia : Button
+    lateinit var BtnRusia : Button
+    var Pais : String = "us"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,19 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
         binding.searchNews.setOnQueryTextListener(this)
 
         initRecyclerView()
+        BtnChina = findViewById(R.id.BtnChina)
+        BtnFrancia = findViewById(R.id.BtnFran)
+        BtnRusia = findViewById(R.id.BtnRusia)
+
+        BtnChina.setOnClickListener{
+            Pais = "cn"
+        }
+        BtnFrancia.setOnClickListener{
+            Pais = "fr"
+        }
+        BtnRusia.setOnClickListener{
+            Pais = "ru"
+        }
         searchNew("business")
     }
 
@@ -43,24 +61,87 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            val call = api.getService()?.getNewsByCategory("us",category,"4b94054dbc6b4b3b9e50d8f62cde4f6c")
-            val news: NewsResponse? = call?.body()
+            if (Pais == "cn"){
+                val call = api.getService()
+                    ?.getNewsByCategory("cn", category, "4b94054dbc6b4b3b9e50d8f62cde4f6c")
+                val news: NewsResponse? = call?.body()
 
-            runOnUiThread{
-                if(call!!.isSuccessful){
-                    if(news?.status.equals("ok")) {
-                        val articles = news?.articles ?: emptyList()
-                        articleList.clear()
-                        articleList.addAll(articles)
-                        adapter.notifyDataSetChanged()
+                runOnUiThread {
+                    if (call!!.isSuccessful) {
+                        if (news?.status.equals("ok")) {
+                            val articles = news?.articles ?: emptyList()
+                            articleList.clear()
+                            articleList.addAll(articles)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            showMessage("Error en webservices")
+                        }
                     } else {
-                        showMessage("Error en webservices")
+                        showMessage("Error en retrofit")
                     }
-                } else {
-                    showMessage("Error en retrofit")
                 }
+                hideKeyBoard()
+            } else if (Pais == "fr") {
+                val call = api.getService()
+                    ?.getNewsByCategory("fr", category, "4b94054dbc6b4b3b9e50d8f62cde4f6c")
+                val news: NewsResponse? = call?.body()
+
+                runOnUiThread {
+                    if (call!!.isSuccessful) {
+                        if (news?.status.equals("ok")) {
+                            val articles = news?.articles ?: emptyList()
+                            articleList.clear()
+                            articleList.addAll(articles)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            showMessage("Error en webservices")
+                        }
+                    } else {
+                        showMessage("Error en retrofit")
+                    }
+                }
+                hideKeyBoard()
+            } else if (Pais == "ru") {
+                val call = api.getService()
+                    ?.getNewsByCategory("ru", category, "4b94054dbc6b4b3b9e50d8f62cde4f6c")
+                val news: NewsResponse? = call?.body()
+
+                runOnUiThread {
+                    if (call!!.isSuccessful) {
+                        if (news?.status.equals("ok")) {
+                            val articles = news?.articles ?: emptyList()
+                            articleList.clear()
+                            articleList.addAll(articles)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            showMessage("Error en webservices")
+                        }
+                    } else {
+                        showMessage("Error en retrofit")
+                    }
+                }
+                hideKeyBoard()
+            } else {
+                val call = api.getService()
+                    ?.getNewsByCategory("us", category, "4b94054dbc6b4b3b9e50d8f62cde4f6c")
+                val news: NewsResponse? = call?.body()
+
+                runOnUiThread {
+                    if (call!!.isSuccessful) {
+                        if (news?.status.equals("ok")) {
+                            val articles = news?.articles ?: emptyList()
+                            articleList.clear()
+                            articleList.addAll(articles)
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            showMessage("Error en webservices")
+                        }
+                    } else {
+                        showMessage("Error en retrofit")
+                    }
+                }
+                hideKeyBoard()
             }
-            hideKeyBoard()
         }
 
     }
@@ -84,6 +165,5 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
     }
-
 
 }
